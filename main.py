@@ -38,5 +38,5 @@ async def on_voice_state_update(member, before, after):
             member.guild.voice_client.play(discord.FFmpegPCMAudio(source="pigeonpy.mp3"))
 
 
-client.run('ODMyOTY4Mjk1MTI4NDk4MjA3.YHrgLQ.67q3Xt9IZRlQEyP4tqic3cEWS6c')
+client.run(os.getenv('TOKEN'))
 
