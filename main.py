@@ -15,7 +15,13 @@ async def on_message(message):
         return
 
     if message.content.startswith('$join'):
-        channel = message.author.voice.channel
+        contents = message.content.split()
+        if len(contents) > 1:
+            channel_name = message.content[len(contents[0])+1:]
+            print(channel_name)
+            channel = discord.utils.get(message.guild.voice_channels, name=channel_name, bitrate=64000)
+        else:
+            channel = message.author.voice.channel
         await channel.connect()
         message.guild.voice_client.play(discord.FFmpegPCMAudio(source="pigeonpy.mp3"))
 
